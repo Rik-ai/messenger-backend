@@ -6,7 +6,7 @@ const messengerSchema = mongoose.Schema({
     timestamp: String,
     received: Boolean
 })
-
-const exportMachine = mongoose.model('messageContent', messengerSchema)
+//collection
+const exportMachine = mongoose.model('messagecontents', messengerSchema)
 
 module.exports = exportMachine
