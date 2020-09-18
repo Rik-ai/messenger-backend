@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose');
 const Messages = require('./dbMessages');
 const Pusher = require('pusher');
+const cors = require('cors')
 
 //app config
 const app = express();
@@ -18,12 +19,7 @@ const pusher = new Pusher({
 
 //middleware
 app.use(express.json())
-
-app.use((req, res, next)=>{
-    res.setHeader("Acces-Control-Allow-Origin", "*")
-    res.setHeader("Acces-Control-Allow-Headers", "*")
-    next()
-})
+app.use(cors())
 
 //DB config
 const connection_url = 'mongodb+srv://admin:G8E7b3xFx29TTZ5@cluster0.2hvei.mongodb.net/messengerDB?retryWrites=true&w=majority'
@@ -48,7 +44,8 @@ db.once('open', ()=>{
             const messageDetails = change.fullDocument
             pusher.trigger('messages', 'inserted',{
                 name: messageDetails.name,
-                message: messageDetails.message
+                message: messageDetails.message,
+                timestamp:messageDetails.timestamp
             })
         } else {
             console.log('Error triggering Pusher')
