@@ -4,7 +4,8 @@ const messengerSchema = mongoose.Schema({
     message: String,
     name: String,
     timestamp: String,
-    received: Boolean
+    received: Boolean,
+    rooms: String
 })
 //collection
 const exportMachine = mongoose.model('messagecontents', messengerSchema)
