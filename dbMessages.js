@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const messengerSchema = mongoose.Schema({
     message: String,
     name: String,
-    timestamp: String,
+    timestamp: Array,
     received: Boolean,
     rooms: String
 })
