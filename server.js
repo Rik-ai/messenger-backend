@@ -7,7 +7,7 @@ const cors = require('cors')
 
 //app config
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT ||  8080;
 
 const pusher = new Pusher({
     appId: '1075412',
@@ -21,8 +21,9 @@ const pusher = new Pusher({
 app.use(express.json())
 app.use(cors())
 
+
 //DB config
-const connection_url = 'mongodb+srv://admin:G8E7b3xFx29TTZ5@cluster0.2hvei.mongodb.net/messengerDB?retryWrites=true&w=majority'
+const connection_url = 'mongodb+srv://Ivan:X28mmJAWt7A967G6@cluster0.evqzt.gcp.mongodb.net/messenger?retryWrites=true&w=majority'
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
